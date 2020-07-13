@@ -66,25 +66,30 @@ function submitMovies() {
           <h3>You can earn <b>INR `+response.amount+`</b> by selecting the following movies:</h3>
         `;
 
-        var movies = response.movies;
-        var l = movies.length;
+        var selectedMovies = response.movies;
+        var l = selectedMovies.length;
 
         for(var i = 0; i < l; i++) {
           html += `
-            <p><b>`+movies[i].name+`</b>: From <u>`+movies[i].start+`</u> To <u>`+movies[i].end+`</u></p>
+            <p><b>`+selectedMovies[i].name+`</b>: From <u>`+selectedMovies[i].start+`</u> To <u>`+selectedMovies[i].end+`</u></p>
           `;
         }
 
         $("#form").html(html);
         $("#added").html("");
+        
+        movies.length = 0;
       }
       else {
-        movies = [];
+        movies.length = 0;
         $("#addedMovies").html("");  
         alert(response.message || "Error!");
       }
     },
     error: function(xhr, status, err) {
+      movies.length = 0;
+      $("#addedMovies").html("");  
+      alert("Error!");
       console.log(err.toString());
     }
   });
