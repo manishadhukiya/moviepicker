@@ -9,8 +9,16 @@ router.post('/pickMovies', function(req, res, next) {
 
 	var l = inputMovies.length;
 
+	if(l == 0) {
+		return res.json({ "status": "failed", "message": "No movie to select!" });
+	}
+
 	for(var i = 0; i < l; i++) {
 		var movie = inputMovies[i];
+
+		if(!movie.name || !movie.start || !movie.end) {
+			return res.json({ "status": "failed", "message": "Invalid Input!" });
+		}
 
 		var oneDay = 1000 * 60 * 60 * 24;
 
@@ -27,6 +35,10 @@ router.post('/pickMovies', function(req, res, next) {
 		day = Math.floor(diff / oneDay);
 
 		movie.endd = day;
+
+		if(movie.startd > movie.endd) {
+			return res.json({ "status": "failed", "message": "Invalid Input!" });
+		}
 
 		inputMovies[i] = movie;
 	}
