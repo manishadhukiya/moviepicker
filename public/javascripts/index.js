@@ -62,7 +62,21 @@ function submitMovies() {
     url: '/apis/pickMovies',
     success: function(response) {
       if(response.status == 'success') {
-        console.log(response.movies, response.amount);
+        var html = `
+          <h3>You can earn <b>INR `+response.amount+`</b> by selecting the following movies:</h3>
+        `;
+
+        var movies = response.movies;
+        var l = movies.length;
+
+        for(var i = 0; i < l; i++) {
+          html += `
+            <p><b>`+movies[i].name+`</b>: From <u>`+movies[i].start+`</u> To <u>`+movies[i].end+`</u></p>
+          `;
+        }
+
+        $("#form").html(html);
+        $("#added").html("");
       }
       else {
         movies = [];
