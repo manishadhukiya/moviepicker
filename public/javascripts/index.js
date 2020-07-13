@@ -45,3 +45,33 @@ function addMovie() {
 
   $("#addedMovies").html(html);  
 }
+
+
+
+
+function submitMovies() {
+  if(movies.length == 0) {
+    alert("No movies to submit!");
+    return;
+  }
+
+  $.ajax({
+    type: "POST",
+    contentType: "application/json",
+    data: JSON.stringify({movies: movies}),
+    url: '/apis/pickMovies',
+    success: function(response) {
+      if(response.status == 'success') {
+        console.log(response.movies, response.amount);
+      }
+      else {
+        movies = [];
+        $("#addedMovies").html("");  
+        alert(response.message || "Error!");
+      }
+    },
+    error: function(xhr, status, err) {
+      console.log(err.toString());
+    }
+  });
+}
