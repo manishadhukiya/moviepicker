@@ -16,7 +16,27 @@
 
 
 <main class="row">
-	
+	<div id="form" class="mt-5 col-4 offset-4">
+		<div class="mb-3">
+			<label for="name" class="form-label">Movie Name</label>
+			<input type="text" class="form-control" id="name" placeholder="Movie Name">
+		</div>
+		<div class="mb-3">
+			<label for="start" class="form-label">Start Date</label>
+			<input class="form-control" id="start" name="sdate" placeholder="Start Date" type="text"/>
+		</div>
+		<div class="mb-3">
+			<label for="end" class="form-label">End Date</label>
+			<input class="form-control" id="end" name="edate" placeholder="End Date" type="text"/>
+		</div>
+		<div class="mb-3" style="text-align: center">
+			<button class="btn btn-primary" id="add">Add Movie</button>
+		</div>
+	</div>
+
+	<div id="added">
+
+	</div>
 </main>
 
 
@@ -24,3 +44,5 @@
 
 <link rel="stylesheet" type="text/css" href="/stylesheets/index.css">
 <script type="text/javascript" src="/javascripts/index.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
