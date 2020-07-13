@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET users listing. */
 router.post('/pickMovies', function(req, res, next) {
 	var inputMovies = req.body.movies;
 
