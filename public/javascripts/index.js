@@ -10,3 +10,27 @@ $(document).ready(function(){
   date_input_s.datepicker(options);
   date_input_e.datepicker(options);
 });
+
+
+
+
+var movies = [];
+
+
+function addMovie() {
+  var name = $("#name").val();
+  var start = $("#start").val();
+  var end = $("#end").val();
+
+  $("#name").val("");
+  $("#start").val("");
+  $("#end").val("");
+
+  movies.push({
+    "name": name,
+    "start": start,
+    "end": end
+  });
+
+  console.log(movies);
+}
