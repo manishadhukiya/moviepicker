@@ -51,7 +51,22 @@ router.post('/pickMovies', function(req, res, next) {
 		}
 	});
 
-	outputMovies = sortedMovies;
+	outputMovies.push(inputMovies[0]);
+
+	for(var i = 1; i < l; i++) {
+		var lastMovie = outputMovies[outputMovies.length - 1];
+		var currentMovie = inputMovies[i];
+
+		if(currentMovie.startd > lastMovie.endd) {
+			outputMovies.push(currentMovie);
+		}
+		else {
+			if(currentMovie.endd < lastMovie.endd) {
+				outputMovies.pop();
+				outputMovies.push(currentMovie);
+			}
+		}
+	}
 
 	return res.json({ "status": "success", "message": "Movies Picked!", "movies": outputMovies });
 });
