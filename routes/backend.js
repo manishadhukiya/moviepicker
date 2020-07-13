@@ -28,8 +28,30 @@ router.post('/pickMovies', function(req, res, next) {
 
 		movie.endd = day;
 
-		outputMovies.push(movie);
+		inputMovies[i] = movie;
 	}
+
+	var sortedMovies = inputMovies.sort(function (a, b) {
+		if(a.startd < b.startd) {
+			return -1;
+		}
+		else if(a.startd > b.startd) {
+			return 1;
+		}
+		else {
+			if(a.endd < b.endd) {
+				return -1;
+			}
+			else if(a.endd > b.endd) {
+				return 1;
+			}
+			else {
+				return 0;
+			}
+		}
+	});
+
+	outputMovies = sortedMovies;
 
 	return res.json({ "status": "success", "message": "Movies Picked!", "movies": outputMovies });
 });
