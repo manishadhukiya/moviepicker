@@ -22,6 +22,11 @@ function addMovie() {
   var start = $("#start").val();
   var end = $("#end").val();
 
+  if(!name || !start || !end) {
+    alert("Invalid Input!");
+    return;
+  }
+
   $("#name").val("");
   $("#start").val("");
   $("#end").val("");
@@ -32,5 +37,11 @@ function addMovie() {
     "end": end
   });
 
-  console.log(movies);
+  var html = $("#addedMovies").html();
+
+  html += `
+    <p><b>`+name+`</b>: From <u>`+start+`</u> To <u>`+end+`</u></p>
+  `;
+
+  $("#addedMovies").html(html);  
 }

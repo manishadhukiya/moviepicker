@@ -3,7 +3,7 @@
 		<div class="col-8">
 			<h2>Welcome to</h2>
 			<h1><b>MoviePicker</b></h1>
-			<p><br/>Add/Remove the movies using the form below.<br/>Click submit to get the movies you should select for maximum profit.</p>
+			<p><br/>Add the movies using the form below.<br/>Click submit to get the movies you should select for maximum profit.</p>
 		</div>
 		
 		<div class="col-4">
@@ -19,7 +19,7 @@
 	<div id="form" class="mt-5 col-4 offset-4">
 		<div class="mb-3">
 			<label for="name" class="form-label">Movie Name</label>
-			<input type="text" class="form-control" id="name" placeholder="Movie Name">
+			<input type="text" class="form-control" id="name" placeholder="Movie Name"/>
 		</div>
 		<div class="mb-3">
 			<label for="start" class="form-label">Start Date</label>
@@ -35,7 +35,13 @@
 	</div>
 
 	<div id="added">
+		<h2>Added Movies:</h2>
+		
+		<div id="addedMovies"></div>
 
+		<div class="mb-3" style="text-align: center">
+			<button onclick="submitMovies();" class="btn btn-primary" id="submit">Submit</button>
+		</div>
 	</div>
 </main>
 
