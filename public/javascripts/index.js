@@ -75,8 +75,9 @@ function submitMovies() {
           `;
         }
 
-        $("#form").html(html);
+        $("#form").html("");
         $("#added").html("");
+        $("#selected").html(html);
         
         movies.length = 0;
       }
