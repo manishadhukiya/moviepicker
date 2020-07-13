@@ -68,7 +68,9 @@ router.post('/pickMovies', function(req, res, next) {
 		}
 	}
 
-	return res.json({ "status": "success", "message": "Movies Picked!", "movies": outputMovies });
+	var amount = outputMovies.length + " Crore";
+
+	return res.json({ "status": "success", "message": "Movies Picked!", "amount": amount, "movies": outputMovies });
 });
 
 module.exports = router;
